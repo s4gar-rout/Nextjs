@@ -1,0 +1,109 @@
+1. WHY WE USE NEXTJS
+React → UI banata hai
+Next.js → UI + Routing + Server + SEO + Optimization etc. deta hai.
+
+2. CREATE NEXTJS APP
+   Command: npx create-next-app@latest
+   
+3. ARCHITECTURE
+   App
+   ├── app/
+   │   ├── page.tsx
+   │   └── layout.tsx
+   ├── components/
+   ├── node_modules/
+   └── package.json
+
+
+
+
+4. APP ROUTE
+Routing is done by creating folders inside app folder
+Example :
+app
+├── page.tsx   → / 
+├── about
+│   └── page.tsx → /about
+└── dashboard
+    ├── page.tsx    → /dashboard
+    └── settings
+        └── page.tsx → /dashboard/settings
+
+
+5. DYNAMIC ROUTE
+app
+└── products
+    └── [id]
+        └── page.tsx → /products/1
+
+
+6. CATCH ALL ROUTES
+app
+└── [...slug]
+    └── page.tsx → /anything
+
+
+
+7. OPTIONAL CATCH ALL ROUTES
+app
+└── [[...path]]
+    └── page.tsx → /anything
+
+
+
+
+8. ROUTE GROUP
+app
+└── (marketing)
+    ├── page.tsx → /marketing/page
+    └── login
+        └── page.tsx → /marketing/login   
+
+( )  → Grouping without affecting URL
+
+
+9. PARALLEL ROUTES
+Two routes at same UI
+app
+└── (auth)
+    ├── login
+    │   └── page.tsx → /login
+    └── signup
+        └── page.tsx → /signup
+
+
+
+10. NAVIGATION
+"use client"
+import { useRouter } from "next/navigation"
+
+const router = useRouter()
+
+router.push("/about") // navigate
+router.replace("/login") // replace without history
+router.back() // back
+router.forward() // forward
+
+
+
+11.FONT
+layout.tsx
+import { Poppins } from "next/font/google"
+
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] })
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={poppins.className}>{children}</body>
+    </html>
+  )
+}
+
+
+
+
+12. IMAGES
+import Image from "next/image"
+
+<Image src="/hero.jpg" alt="Hero" width={500} height={500} />
